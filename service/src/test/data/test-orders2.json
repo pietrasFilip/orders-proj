@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "customer": {
+      "id": 1,
+      "name": "A",
+      "surname": "A",
+      "age": 28,
+      "email": "a@gmail.com"
+    },
+    "product": {
+      "id": 1,
+      "name": "ZZ",
+      "price": 20,
+      "category": "A"
+    },
+    "quantity": 5,
+    "orderDate": "2023-05-20T07:31:15.000009+01:00[Europe/Warsaw]"
+  },
+  {
+    "id": 2,
+    "customer": {
+      "id": 2,
+      "name": "B",
+      "surname": "B",
+      "age": 18,
+      "email": "b@gmail.com"
+    },
+    "product": {
+      "id": 2,
+      "name": "XX",
+      "price": 100,
+      "category": "B"
+    },
+    "quantity": 1,
+    "orderDate": "2023-02-22T12:00:15.000009+01:00[Europe/Warsaw]"
+  },
+  {
+    "id": 3,
+    "customer": {
+      "id": 1,
+      "name": "A",
+      "surname": "A",
+      "age": 28,
+      "email": "a@gmail.com"
+    },
+    "product": {
+      "id": 3,
+      "name": "WW",
+      "price": 10,
+      "category": "A"
+    },
+    "quantity": 3,
+    "orderDate": "2023-02-22T21:53:15.000009+01:00[Europe/Warsaw]"
+  },
+  {
+    "id": 4,
+    "customer": {
+      "id": 3,
+      "name": "C",
+      "surname": "C",
+      "age": 40,
+      "email": "c@gmail.com"
+    },
+    "product": {
+      "id": 4,
+      "name": "ZX",
+      "price": 10,
+      "category": "A"
+    },
+    "quantity": 10,
+    "orderDate": "2023-05-20T04:31:15.000009+01:00[Europe/Warsaw]"
+  },
+  {
+    "id": 5,
+    "customer": {
+      "id": 4,
+      "name": "D",
+      "surname": "D",
+      "age": 28,
+      "email": "d@gmail.com"
+    },
+    "product": {
+      "id": 5,
+      "name": "YY",
+      "price": 5,
+      "category": "C"
+    },
+    "quantity": 8,
+    "orderDate": "2023-02-22T14:12:15.000009+01:00[Europe/Warsaw]"
+  }
+]
