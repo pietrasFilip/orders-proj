@@ -1,7 +1,7 @@
-package com.app.persistence.model.validator.generic;
+package com.app.persistence.model.dto.validator.generic;
 
 
-import com.app.persistence.model.validator.exception.DtoException;
+import com.app.persistence.model.dto.validator.exception.DtoException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

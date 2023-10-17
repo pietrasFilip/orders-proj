@@ -11,7 +11,7 @@ import com.app.persistence.model.dto.order.GetOrderDto;
 import com.app.persistence.model.order.Order;
 import com.app.persistence.model.order.product.Product;
 import com.app.persistence.model.order.product.product_category.Category;
-import com.app.persistence.model.validator.CreateOrderDtoValidator;
+import com.app.persistence.model.dto.validator.CreateOrderDtoValidator;
 import com.app.service.email.EmailService;
 import com.app.service.orders.exception.OrdersServiceException;
 import com.app.service.orders.provider.OrdersProvider;
