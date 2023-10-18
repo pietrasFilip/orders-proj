@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  mysql_test:
+    image: mysql:8.0
+    restart: always
+
+    environment:
+      MYSQL_DATABASE: test_orders
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user1234
+      MYSQL_TCP_PORT: 3307
+    ports:
+      - "3307:3307"
+    expose:
+      - "3307"
+    networks:
+      - orders-network
+    volumes:
+      - "./persistence/src/test/data/schema.sql:/docker-entrypoint-initdb.d/1.sql"
+      - "./persistence/src/test/data/data.sql:/docker-entrypoint-initdb.d/2.sql"
+
+  mysql_main:
+    image: mysql:8.0
+    restart: always
+
+    environment:
+      MYSQL_DATABASE: orders
+      MYSQL_ROOT_PASSWORD: main
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user1234
+      MYSQL_TCP_PORT: 3308
+    ports:
+      - "3308:3308"
+    expose:
+      - "3308"
+    networks:
+      - orders-network
+    volumes:
+      - "mysql_orders:/var/lib/mysql"
+      - "./api/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/1.sql"
+
+  orders_web_app:
+    image: pietrasfilip/orders-app:1.0
+    ports:
+      - "8080:8080"
+    restart: always
+    networks:
+      - orders-network
+
+volumes:
+  mysql_test:
+  mysql_orders:
+  orders_web_app:
+networks:
+  orders-network:
