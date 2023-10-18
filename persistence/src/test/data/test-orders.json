@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "customer": {
+      "id": 1,
+      "name": "A",
+      "surname": "A",
+      "age": 25,
+      "email": "a@gmail.com"
+    },
+    "product": {
+      "id": 1,
+      "name": "B",
+      "price": 30,
+      "category": "A"
+    },
+    "quantity": 2,
+    "orderDate": "2023-12-03T10:15:30+01:00[Europe/Warsaw]"
+  },
+  {
+    "id": 2,
+    "customer": {
+      "id": 2,
+      "name": "B",
+      "surname": "B",
+      "age": 35,
+      "email": "b@gmail.com"
+    },
+    "product": {
+      "id": 2,
+      "name": "C",
+      "price": 20,
+      "category": "A"
+    },
+    "quantity": 1,
+    "orderDate": "2023-12-03T10:15:30+01:00[Europe/Warsaw]"
+  }
+]
