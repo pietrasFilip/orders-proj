@@ -1,0 +1,498 @@
+{
+	"info": {
+		"_postman_id": "b91f9a2d-641c-4bc1-9987-6ec12ee235c8",
+		"name": "orders",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27852418"
+	},
+	"item": [
+		{
+			"name": "SECURITY",
+			"item": [
+				{
+					"name": "create-users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\",\r\n    \"email\": \"\",\r\n    \"password\": \"\",\r\n    \"passwordConfirmation\": \"\",\r\n    \"role\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjkxNzAxMDI1LCJpYXQiOjE2OTE2NzEwMjUsIlwiYWNjZXNzLXRva2VuLWV4cGlyYXRpb24tdGltZS1tc1wiIjoxNjkxNjcxMzI1MzA1fQ.4K-jQbzvDc34X1z0yTIHmdfV17UNuqfDedZCT0yN3fly-L8nmqS2mU8rd5NoR7ZDIhhpUmkTbwD_74P-9rsq3A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "IS_AUTH",
+			"item": [
+				{
+					"name": "orders-average-price-timeFrom-timeTo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/is_auth/orders/average_price/:timeFrom/:timeTo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"is_auth",
+								"orders",
+								"average_price",
+								":timeFrom",
+								":timeTo"
+							],
+							"variable": [
+								{
+									"key": "timeFrom",
+									"value": "",
+									"description": "use this format: 2023-12-04T10:15:30+01:00"
+								},
+								{
+									"key": "timeTo",
+									"value": "",
+									"description": "use this format: 2023-12-04T10:15:30+01:00"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "date-of-min-max-orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/is_auth/orders/quantity/date_of/:isMin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"is_auth",
+								"orders",
+								"quantity",
+								"date_of",
+								":isMin"
+							],
+							"variable": [
+								{
+									"key": "isMin",
+									"value": "false",
+									"description": "false/true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "max-price-from-category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/is_auth/orders/max",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"is_auth",
+								"orders",
+								"max"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "purchased-by",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/is_auth/orders/purchased_by/:email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"is_auth",
+								"orders",
+								"purchased_by",
+								":email"
+							],
+							"variable": [
+								{
+									"key": "email",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer-most-expensive-orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/is_auth/orders/customer/most_expensive",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"is_auth",
+								"orders",
+								"customer",
+								"most_expensive"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "price-after-discount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/is_auth/orders/price/discount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"is_auth",
+								"orders",
+								"price",
+								"discount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ordered-more-than-or-exactly",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/is_auth/orders/customer/:quantity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"is_auth",
+								"orders",
+								"customer",
+								":quantity"
+							],
+							"variable": [
+								{
+									"key": "quantity",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send-pdf-in-email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/is_auth/orders/pdf_list/:email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"is_auth",
+								"orders",
+								"pdf_list",
+								":email"
+							],
+							"variable": [
+								{
+									"key": "email",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "most-bought-category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/orders/categories/most_bought",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"orders",
+								"categories",
+								"most_bought"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "months-with-number-of-bought-products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/orders/months/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"orders",
+								"months",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "most-popular-category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/orders/categories/most_popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"orders",
+								"categories",
+								"most_popular"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ALL",
+			"item": [
+				{
+					"name": "all-orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/all/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"all",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerName\": \"\",\r\n    \"surname\": \"\",\r\n    \"age\": 20,\r\n    \"email\": \"\",\r\n    \"productId\": 2,\r\n    \"quantity\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all-products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/all/products/find",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"all",
+								"products",
+								"find"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk3NzYxOTMzLCJpYXQiOjE2OTc3MzE5MzN9.4tn-nfmHbTmPZ8kMo5oyXfA0LrFStk_V4N6hGflv005IYW0AG0r9hbtZ2aiGyfLtW7095wUKb-fE0nWF34MqNw",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
