@@ -56,29 +56,13 @@ public class SecurityRouting {
         return uris.get(key).stream().anyMatch(uri::startsWith);
     }
 
-    private String prepareToken(String header) {
-        if (header == null) {
-            logger.error("Header is null");
-            throw new SecurityRoutingException("Header is null");
-        }
-
-        final var TOKEN_PREFIX = "Bearer ";
-
-        if (!header.startsWith(TOKEN_PREFIX)) {
-            logger.error("Header does not start with {}", TOKEN_PREFIX);
-            throw new SecurityRoutingException("Header is not correct");
-        }
-
-        return header.replace(TOKEN_PREFIX, "");
-    }
-
     public void routes() {
         before((request, response) -> {
             var uriFromRequest = request.uri();
 
             if (!containsUri(PERMITTED_ALL, uriFromRequest)) {
-                var authorizationHeader = request.headers("Authorization");
-                var authorizedUser = tokensService.parseTokens(prepareToken(authorizationHeader));
+                var accessCookie = request.cookie("access");
+                var authorizedUser = tokensService.parseTokens(accessCookie);
 
                 if (
                         (containsUri(IS_AUTH, uriFromRequest) && !authorizedUser.isAuth()) ||
@@ -110,8 +94,8 @@ public class SecurityRouting {
 
                         var tokens = tokensService.generateTokens(userId);
                         response.header("Content-Type", "application/json;charset=utf-8");
-                        response.cookie("access", tokens.access(), 3600000, false, true);
-                        response.cookie("refresh", tokens.refresh(), 3600000, false, true);
+                        response.cookie("/", "access", tokens.access(), 3600000, false, true);
+                        response.cookie("/", "refresh", tokens.refresh(), 3600000, false, true);
                         return new ResponseDto<>(tokens);
                     },
                     jsonTransformer

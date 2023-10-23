@@ -30,6 +30,8 @@ public final class TokensServiceImpl implements TokensService {
     private final RefreshTokenDtoValidator refreshTokenDtoValidator;
     private final TokensDtoValidator tokensDtoValidator;
     private static final Logger logger = LogManager.getRootLogger();
+    @Value("${ACCESS_TOKEN_EXPIRATION_TIME_MS}")
+    private String accessTokenExpirationTimeMs;
     @Value("${REFRESH_TOKEN_EXPIRATION_TIME_MS}")
     private String refreshTokenExpirationTimeMs;
     @Value("${ACCESS_TOKEN_EXPIRATION_TIME_PROPERTY_IN_REFRESH}")
@@ -48,7 +50,7 @@ public final class TokensServiceImpl implements TokensService {
     public AuthorizationDto parseTokens(String token) {
         if (token == null) {
             logger.error("Parse tokens - token is null");
-            throw new TokenServiceException("Token error");
+            throw new TokenServiceException("Access Denied!");
         }
 
         if (isTokenNotValid(token)) {
@@ -78,8 +80,8 @@ public final class TokensServiceImpl implements TokensService {
             throw new TokenServiceException("Token error");
         }
 
-        var accessTokenExpirationTimeMs = accessTokenExpirationDateMsInRefreshToken(token);
-        if (accessTokenExpirationTimeMs < System.currentTimeMillis()) {
+        var accessTokenExpirationTimeMsRefresh = accessTokenExpirationDateMsInRefreshToken(token);
+        if (accessTokenExpirationTimeMsRefresh < System.currentTimeMillis()) {
             logger.error("Access token has been expired");
             throw new TokenServiceException("Token error");
         }
@@ -97,7 +99,7 @@ public final class TokensServiceImpl implements TokensService {
     private TokensDto accessAndRefreshToken(Long userId, Date refreshTokenExpirationDate) {
         var currentDate = Date.from(ZonedDateTime.now().toInstant());
         var accessTokenExpirationDate = Date.from(currentDate.toInstant()
-                .plusMillis(Long.parseLong(refreshTokenExpirationTimeMs)));
+                .plusMillis(Long.parseLong(accessTokenExpirationTimeMs)));
 
         var accessToken = Jwts
                 .builder()

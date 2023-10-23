@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "b91f9a2d-641c-4bc1-9987-6ec12ee235c8",
-		"name": "orders",
+		"_postman_id": "d3d03e28-bf66-4304-9729-4937cffc0a53",
+		"name": "orders Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "27852418"
 	},
@@ -465,16 +465,6 @@
 			]
 		}
 	],
-	"auth": {
-		"type": "bearer",
-		"bearer": [
-			{
-				"key": "token",
-				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk3NzYxOTMzLCJpYXQiOjE2OTc3MzE5MzN9.4tn-nfmHbTmPZ8kMo5oyXfA0LrFStk_V4N6hGflv005IYW0AG0r9hbtZ2aiGyfLtW7095wUKb-fE0nWF34MqNw",
-				"type": "string"
-			}
-		]
-	},
 	"event": [
 		{
 			"listen": "prerequest",

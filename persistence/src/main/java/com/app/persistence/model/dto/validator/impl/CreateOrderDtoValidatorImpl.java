@@ -16,15 +16,15 @@ import static java.lang.Integer.parseInt;
 @Component
 @RequiredArgsConstructor
 public class CreateOrderDtoValidatorImpl implements CreateOrderDtoValidator {
-    @Value("${minQuantity}")
+    @Value("${validator.min.quantity}")
     private String minQuantity;
-    @Value("${nameRegex}")
+    @Value("${validator.regex.name}")
     private String nameRegex;
-    @Value("${surnameRegex}")
+    @Value("${validator.regex.surname}")
     private String surnameRegex;
-    @Value("${emailRegex}")
+    @Value("${validator.regex.email}")
     private String emailRegex;
-    @Value("${minAge}")
+    @Value("${validator.min.age}")
     private String minAge;
 
     @Override
