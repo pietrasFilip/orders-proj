@@ -40,14 +40,21 @@ services:
     volumes:
       - "mysql_orders:/var/lib/mysql"
       - "./api/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/1.sql"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
 
   orders_web_app:
-    image: pietrasfilip/orders-app:1.0
+    image: pietrasfilip/orders-app:1.1
     ports:
       - "8080:8080"
     restart: always
     networks:
       - orders-network
+    depends_on:
+      mysql_main:
+        condition: service_healthy
 
 volumes:
   mysql_test:

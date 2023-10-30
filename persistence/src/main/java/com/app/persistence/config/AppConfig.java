@@ -27,7 +27,7 @@ public class AppConfig {
 
     @Bean
     public Gson gson() {
-        return new GsonBuilder().serializeNulls().setPrettyPrinting().create();
+        return new GsonBuilder().serializeNulls().setPrettyPrinting().enableComplexMapKeySerialization().create();
     }
 
     @Bean
